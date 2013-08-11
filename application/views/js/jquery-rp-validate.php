@@ -72,27 +72,26 @@
 				
 				//check the default validity
 				if(that.valid()==false){
+					console.log(that._options.error);
 					$(this).
 						attr('data-error',that._options.error).
 						addClass('rp-error');
+					that.element.
+						tooltip({
+							items:'[data-error]',
+							content: that._options.error,
+							position:{ my: "center bottom+3", at: "center top" }
+							
+						}).
+						tooltip('open');
 				}
 				else{
 					$(this).
 						removeClass('rp-error').
-						removeAttr('data-error');
+						removeAttr('data-error').
+						tooltip().
+						tooltip('close');
 				}
-				that.element.
-					tooltip().
-					tooltip('close').
-					tooltip({
-						items:'[data-error]',
-						content:function(){
-							return $(this).data('error');
-						},
-						position:{ my: "center bottom+3", at: "center top" }
-						
-					}).
-					tooltip('open');
 			});
 		},
 		_typeCheckErrors:function(){

@@ -506,7 +506,6 @@ var
 					return;
 				}
 				that.dropdown("hide");
-				return false;
 			});
 			
 			clearIconElement.
